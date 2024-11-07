@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model todos {
+  id        Int     @id @default(autoincrement())
+  title     String? @db.VarChar(255)
+  category  Int?
+  completed String? @db.Bit(1)
+}
